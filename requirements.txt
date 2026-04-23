@@ -1,0 +1,13 @@
+nltk
+sklearn-crfsuite
+python-crfsuite
+scikit-learn
+pandas
+regex
+tqdm
+jupyter
+matplotlib
+beautifulsoup4
+lxml
+requests
+pytest
