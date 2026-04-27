@@ -1,0 +1,45 @@
+Train sentences: 106
+Dev sentences: 13
+Train+Dev pool: 119
+Test sentences: 14
+CRF params: c1=0.01, c2=0.1
+Running learning curve experiment...
+
+Training fraction=0.25, seed=13
+n_train=30 P=0.727 R=0.367 F1=0.488 TP=72 FP=27 FN=124
+
+Training fraction=0.25, seed=21
+n_train=30 P=0.804 R=0.398 F1=0.532 TP=78 FP=19 FN=118
+
+Training fraction=0.25, seed=42
+n_train=30 P=0.854 R=0.357 F1=0.504 TP=70 FP=12 FN=126
+
+Training fraction=0.50, seed=13
+n_train=60 P=0.808 R=0.408 F1=0.542 TP=80 FP=19 FN=116
+
+Training fraction=0.50, seed=21
+n_train=60 P=0.784 R=0.388 F1=0.519 TP=76 FP=21 FN=120
+
+Training fraction=0.50, seed=42
+n_train=60 P=0.795 R=0.357 F1=0.493 TP=70 FP=18 FN=126
+
+Training fraction=0.75, seed=13
+n_train=89 P=0.863 R=0.418 F1=0.564 TP=82 FP=13 FN=114
+
+Training fraction=0.75, seed=21
+n_train=89 P=0.825 R=0.434 F1=0.569 TP=85 FP=18 FN=111
+
+Training fraction=0.75, seed=42
+n_train=89 P=0.832 R=0.429 F1=0.566 TP=84 FP=17 FN=112
+
+Training fraction=1.00, seed=13
+n_train=119 P=0.822 R=0.449 F1=0.581 TP=88 FP=19 FN=108
+
+Training fraction=1.00, seed=21
+n_train=119 P=0.822 R=0.449 F1=0.581 TP=88 FP=19 FN=108
+
+Training fraction=1.00, seed=42
+n_train=119 P=0.815 R=0.449 F1=0.579 TP=88 FP=20 FN=108
+
+Saved CSV to /Users/irving/Natural-language-processing-project/results/learning_curve.csv
+Saved summary to /Users/irving/Natural-language-processing-project/results/learning_curve_summary.md
