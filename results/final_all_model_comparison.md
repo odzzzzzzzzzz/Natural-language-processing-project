@@ -51,6 +51,20 @@ Feature extensions and enhanced systems did not surpass the tuned CRF. Chunk fea
 
 The CoNLL-2003 transfer baseline achieved only 0.072 span F1, confirming that legal NER requires in-domain annotation and a legal-specific schema.
 
+
+## Auxiliary Analysis: Learning Curve
+
+We also ran a learning-curve experiment to test whether additional annotated legal data improves CRF performance.
+
+| Training Fraction | Mean Span F1 |
+|---:|---:|
+| 25% | 0.508 |
+| 50% | 0.518 |
+| 75% | 0.566 |
+| 100% | 0.580 |
+
+This result supports the claim that additional in-domain legal annotation improves strict span-level NER performance. However, the relatively small improvement from 75% to 100% suggests that the remaining errors are not only caused by limited data, but also by legal-specific boundary ambiguity, especially in PARTY and CITATION contexts.
+
 ## Paper-Ready Paragraph
 
 Across all systems, the dev-selected tuned CRF is the strongest model, achieving 0.822 precision, 0.449 recall, and 0.581 strict span-level F1. We additionally performed a 10-fold cross-validation tuning check, which selected c1=0.1 and c2=0.1 with mean CV F1 of 0.602. However, when retrained on train plus development data and evaluated on the held-out test set, this CV-selected model achieved only 0.568 span-level F1. Therefore, we retain the dev-selected tuned CRF as the final reported system. Additional feature experiments did not surpass the tuned CRF: chunk features nearly matched it with 0.580 F1, gazetteer features reached 0.570 F1, POS features reached 0.559 F1, and Brown-style word-cluster features reached 0.557 F1. Rule-CRF ensemble variants also failed to improve the final result. These experiments show that in-domain legal CRF training and careful tuning matter most, while the remaining weaknesses require better legal annotation and better handling of PARTY/CITATION ambiguity.
