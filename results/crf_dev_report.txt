@@ -1,0 +1,14 @@
+              precision    recall  f1-score   support
+
+  B-CITATION      0.771     0.574     0.659        47
+     B-COURT      1.000     0.200     0.333         5
+      B-DATE      1.000     0.667     0.800         6
+       B-ORG      0.000     0.000     0.000         2
+  I-CITATION      0.926     0.710     0.804       692
+     I-COURT      0.800     0.250     0.381        16
+      I-DATE      1.000     0.933     0.966        15
+       I-ORG      0.000     0.000     0.000         4
+
+   micro avg      0.919     0.687     0.786       787
+   macro avg      0.687     0.417     0.493       787
+weighted avg      0.910     0.687     0.780       787
