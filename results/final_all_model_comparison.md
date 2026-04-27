@@ -2,9 +2,7 @@
 
 ## Purpose
 
-This file consolidates all final systems and experimental variants into one comparison table. It is intended to serve as the main reference table for the final paper and presentation.
-
-The primary evaluation metric is strict span-level exact-match F1. Token-level F1 is also reported when available, but span-level F1 should be treated as the main NER metric because it requires exact entity boundaries and correct entity type.
+This file consolidates all final systems and experimental variants into one comparison table. The primary evaluation metric is strict span-level exact-match F1.
 
 ## Span-Level Exact-Match Results
 
@@ -15,16 +13,17 @@ The primary evaluation metric is strict span-level exact-match F1. Token-level F
 | 3 | Ensemble TunedRule | 0.793 | 0.449 | 0.573 | 88 | 23 | 108 | Rule-CRF ensemble |
 | 4 | CRF NoStage2 | 0.819 | 0.439 | 0.571 | 86 | 19 | 110 | Rule-output ablation |
 | 5 | CRF + Gazetteer | 0.811 | 0.439 | 0.570 | 86 | 20 | 110 | Gazetteer feature experiment |
-| 6 | Ensemble NoStage2Rule | 0.782 | 0.439 | 0.562 | 86 | 24 | 110 | NoStage2 + rule ensemble |
-| 7 | CRF + POS | 0.787 | 0.434 | 0.559 | 85 | 23 | 111 | POS feature experiment |
-| 8 | CRF + WordCluster | 0.780 | 0.434 | 0.557 | 85 | 24 | 111 | Brown-style word-cluster experiment |
-| 9 | Original CRF | 0.781 | 0.418 | 0.545 | 82 | 23 | 114 | Original legal-domain CRF |
-| 10 | CRF + BIO Repair | 0.781 | 0.418 | 0.545 | 82 | 23 | 114 | Minimal post-processing |
-| 11 | CRF + Full Post-processing | 0.621 | 0.327 | 0.428 | 64 | 39 | 132 | Full heuristic post-processing |
-| 12 | Rule-Based | 0.652 | 0.153 | 0.248 | 30 | 16 | 166 | Rules-only baseline |
-| 13 | Stanza | 0.157 | 0.240 | 0.190 | 47 | 252 | 149 | General-domain pretrained baseline |
-| 14 | CoNLL-2003 CRF Transfer | 0.087 | 0.061 | 0.072 | 12 | 126 | 184 | Out-of-domain CRF baseline |
-| 15 | Majority | 0.000 | 0.000 | 0.000 | 0 | 0 | 68 | Lower-bound baseline |
+| 6 | CRF CVSelected | 0.804 | 0.439 | 0.568 | 86 | 21 | 110 | 10-fold CV-selected CRF |
+| 7 | Ensemble NoStage2Rule | 0.782 | 0.439 | 0.562 | 86 | 24 | 110 | NoStage2 + rule ensemble |
+| 8 | CRF + POS | 0.787 | 0.434 | 0.559 | 85 | 23 | 111 | POS feature experiment |
+| 9 | CRF + WordCluster | 0.780 | 0.434 | 0.557 | 85 | 24 | 111 | Brown-style word-cluster experiment |
+| 10 | Original CRF | 0.781 | 0.418 | 0.545 | 82 | 23 | 114 | Original legal-domain CRF |
+| 11 | CRF + BIO Repair | 0.781 | 0.418 | 0.545 | 82 | 23 | 114 | Minimal post-processing |
+| 12 | CRF + Full Post-processing | 0.621 | 0.327 | 0.428 | 64 | 39 | 132 | Full heuristic post-processing |
+| 13 | Rule-Based | 0.652 | 0.153 | 0.248 | 30 | 16 | 166 | Rules-only baseline |
+| 14 | Stanza | 0.157 | 0.240 | 0.190 | 47 | 252 | 149 | General-domain pretrained baseline |
+| 15 | CoNLL-2003 CRF Transfer | 0.087 | 0.061 | 0.072 | 12 | 126 | 184 | Out-of-domain CRF baseline |
+| 16 | Majority | 0.000 | 0.000 | 0.000 | 0 | 0 | 68 | Lower-bound baseline |
 
 ## Token-Level Results Where Available
 
@@ -32,6 +31,7 @@ The primary evaluation metric is strict span-level exact-match F1. Token-level F
 |---|---:|---:|---:|---|
 | Tuned CRF | 0.843 | 0.651 | 0.734 | Final best model |
 | Ensemble TunedRule | 0.819 | 0.662 | 0.732 | Slightly higher recall, lower precision |
+| CRF CVSelected | 0.865 | 0.634 | 0.732 | CV-selected regularization |
 | CRF + Chunk | 0.845 | 0.638 | 0.727 | Near-tie with tuned CRF |
 | Ensemble NoStage2Rule | 0.800 | 0.664 | 0.726 | Rule ensemble variant |
 | CRF + Gazetteer | 0.877 | 0.616 | 0.724 | Higher precision, lower recall |
@@ -45,66 +45,16 @@ The primary evaluation metric is strict span-level exact-match F1. Token-level F
 
 ## Main Findings
 
-### 1. Tuned CRF remains the final best model.
+The tuned CRF remains the final best model. Although 10-fold cross-validation selected `c1=0.1, c2=0.1`, the CV-selected model reached only 0.568 span-level F1 on the held-out test set, below the dev-selected tuned CRF's 0.581. Therefore, the final reported model remains the dev-selected tuned CRF.
 
-The tuned CRF obtains the highest strict span-level F1:
+Feature extensions and enhanced systems did not surpass the tuned CRF. Chunk features nearly tied it with 0.580 span F1, but POS, gazetteer, word-cluster, ensemble, NoStage2, and full post-processing variants all remained lower.
 
-| Model | Span F1 |
-|---|---:|
-| Tuned CRF | 0.581 |
-| CRF + Chunk | 0.580 |
-| Ensemble TunedRule | 0.573 |
-| CRF NoStage2 | 0.571 |
-| CRF + Gazetteer | 0.570 |
-
-Although several variants are close, none surpass the tuned CRF. Therefore, the tuned CRF remains the final reported system.
-
-### 2. Hyperparameter tuning is the most useful improvement.
-
-The original CRF achieved 0.545 span-level F1. After dev-set tuning and retraining on train + dev, the tuned CRF reached 0.581 span-level F1.
-
-| Model | Precision | Recall | F1 |
-|---|---:|---:|---:|
-| Original CRF | 0.781 | 0.418 | 0.545 |
-| Tuned CRF | 0.822 | 0.449 | 0.581 |
-
-### 3. Feature extensions do not beat the tuned CRF.
-
-POS, gazetteer, chunk, and word-cluster features were tested. Chunk features nearly tie the tuned CRF, but none of the extra feature groups improve the final result.
-
-| Feature Variant | Span F1 |
-|---|---:|
-| CRF + Chunk | 0.580 |
-| CRF + Gazetteer | 0.570 |
-| CRF + POS | 0.559 |
-| CRF + WordCluster | 0.557 |
-
-### 4. Ensemble systems do not improve strict span-level F1.
-
-The rule-CRF ensemble recovers a few additional rule-based spans, especially citation-like spans, but it also introduces boundary and precision noise.
-
-| Ensemble Variant | Span F1 |
-|---|---:|
-| Tuned CRF | 0.581 |
-| Ensemble TunedRule | 0.573 |
-| Ensemble NoStage2Rule | 0.562 |
-
-### 5. Full heuristic post-processing hurts performance.
-
-Full Stage 4 post-processing lowers span-level F1 from 0.545 to 0.428. The Stage 4 ablation shows that this degradation is mainly caused by aggressive span completion. BIO repair, type consistency, and nested resolution alone have no effect.
-
-### 6. Domain transfer is very weak.
-
-The CoNLL-2003 CRF transfer baseline achieves only 0.072 span-level F1. This confirms that general-domain NER training does not transfer well to legal-specific entity recognition.
-
-### 7. Rule-based extraction is precise but incomplete.
-
-The rule-based system reaches 0.652 precision but only 0.153 recall. This confirms that hand-written legal patterns can identify some reliable entities but cannot cover the full legal NER task.
+The CoNLL-2003 transfer baseline achieved only 0.072 span F1, confirming that legal NER requires in-domain annotation and a legal-specific schema.
 
 ## Paper-Ready Paragraph
 
-Across all systems, the tuned CRF is the strongest model, achieving 0.822 precision, 0.449 recall, and 0.581 strict span-level F1. This improves over the original CRF's 0.545 span-level F1 and substantially outperforms the rule-based baseline, Stanza baseline, and CoNLL-2003 transfer CRF. Additional feature experiments did not surpass the tuned CRF: chunk features nearly matched it with 0.580 F1, gazetteer features reached 0.570 F1, POS features reached 0.559 F1, and Brown-style word-cluster features reached 0.557 F1. Two rule-CRF ensemble variants also failed to improve the final result, achieving 0.573 and 0.562 F1. The CoNLL-2003 transfer baseline achieved only 0.072 F1, confirming that legal NER requires in-domain annotation and a legal-specific entity schema. Overall, these experiments show that the best current system is a tuned legal-domain CRF, while the remaining weaknesses are not solved by generic POS, chunk, gazetteer, word-cluster, ensemble, or post-processing features.
+Across all systems, the dev-selected tuned CRF is the strongest model, achieving 0.822 precision, 0.449 recall, and 0.581 strict span-level F1. We additionally performed a 10-fold cross-validation tuning check, which selected c1=0.1 and c2=0.1 with mean CV F1 of 0.602. However, when retrained on train plus development data and evaluated on the held-out test set, this CV-selected model achieved only 0.568 span-level F1. Therefore, we retain the dev-selected tuned CRF as the final reported system. Additional feature experiments did not surpass the tuned CRF: chunk features nearly matched it with 0.580 F1, gazetteer features reached 0.570 F1, POS features reached 0.559 F1, and Brown-style word-cluster features reached 0.557 F1. Rule-CRF ensemble variants also failed to improve the final result. These experiments show that in-domain legal CRF training and careful tuning matter most, while the remaining weaknesses require better legal annotation and better handling of PARTY/CITATION ambiguity.
 
 ## Presentation Version
 
-Our final best model is the tuned CRF, with 0.581 strict span-level F1. It beats the original CRF, rule-based system, Stanza, and CoNLL transfer baseline. Chunk features almost tie it, but do not beat it. POS, gazetteer, word-cluster, and ensemble variants do not improve the overall result. Full post-processing actually hurts because it expands citation spans too aggressively. The main conclusion is that in-domain legal CRF training and tuning matter most, while the remaining errors require better legal annotation and better handling of PARTY/CITATION ambiguity.
+Our final best model is still the dev-selected tuned CRF, with 0.581 strict span F1. We also ran 10-fold CV; it selected a slightly different parameter setting, but that model only got 0.568 on the held-out test set. So CV confirms that tuning matters, but it does not replace our final model. None of the extra features or ensemble systems beat the tuned CRF.
