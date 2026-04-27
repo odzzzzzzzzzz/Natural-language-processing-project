@@ -1,0 +1,62 @@
+Train sentences: 106
+Dev sentences: 13
+Test sentences: 14
+Starting CRF grid search...
+
+Training c1=0.01, c2=0.01
+Dev span F1=0.570, P=0.661, R=0.501; token F1=0.487
+
+Training c1=0.01, c2=0.1
+Dev span F1=0.585, P=0.671, R=0.519; token F1=0.516
+
+Training c1=0.01, c2=0.5
+Dev span F1=0.569, P=0.648, R=0.506; token F1=0.522
+
+Training c1=0.01, c2=1.0
+Dev span F1=0.552, P=0.642, R=0.484; token F1=0.509
+
+Training c1=0.1, c2=0.01
+Dev span F1=0.546, P=0.627, R=0.484; token F1=0.494
+
+Training c1=0.1, c2=0.1
+Dev span F1=0.537, P=0.616, R=0.476; token F1=0.499
+
+Training c1=0.1, c2=0.5
+Dev span F1=0.553, P=0.633, R=0.491; token F1=0.517
+
+Training c1=0.1, c2=1.0
+Dev span F1=0.548, P=0.629, R=0.486; token F1=0.506
+
+Training c1=0.5, c2=0.01
+Dev span F1=0.572, P=0.657, R=0.506; token F1=0.503
+
+Training c1=0.5, c2=0.1
+Dev span F1=0.560, P=0.639, R=0.499; token F1=0.525
+
+Training c1=0.5, c2=0.5
+Dev span F1=0.567, P=0.647, R=0.504; token F1=0.536
+
+Training c1=0.5, c2=1.0
+Dev span F1=0.546, P=0.618, R=0.489; token F1=0.548
+
+Training c1=1.0, c2=0.01
+Dev span F1=0.539, P=0.638, R=0.466; token F1=0.513
+
+Training c1=1.0, c2=0.1
+Dev span F1=0.528, P=0.632, R=0.453; token F1=0.500
+
+Training c1=1.0, c2=0.5
+Dev span F1=0.537, P=0.639, R=0.463; token F1=0.513
+
+Training c1=1.0, c2=1.0
+Dev span F1=0.555, P=0.660, R=0.479; token F1=0.529
+
+Best configuration:
+{'c1': 0.01, 'c2': 0.1, 'dev_span_precision': 0.6710097719869706, 'dev_span_recall': 0.5188916876574308, 'dev_span_f1': 0.5852272727272727, 'dev_span_tp': 206, 'dev_span_fp': 101, 'dev_span_fn': 191, 'dev_token_precision': 0.6896168795113826, 'dev_token_recall': 0.41248754566589174, 'dev_token_f1': 0.5162094763092269, 'dev_token_tp': 1242, 'dev_token_fp': 559, 'dev_token_fn': 1769}
+Saved tuning CSV to /Users/irving/Natural-language-processing-project/results/crf_tuning.csv
+Saved tuning summary to /Users/irving/Natural-language-processing-project/results/crf_tuning.md
+
+Retraining tuned CRF on train + dev...
+Saved tuned model to /Users/irving/Natural-language-processing-project/models/crf_tuned.pkl
+Predicting test set with tuned CRF...
+Saved tuned CRF test predictions to /Users/irving/Natural-language-processing-project/data/splits/test_crf_tuned_pred.conll
