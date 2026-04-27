@@ -2,8 +2,8 @@
 
 | Setting | Disabled Group | Dev Micro-F1 | F1 Drop |
 |---|---:|---:|---:|
-| All features |  | 0.786 | 0.000 |
-| Without group A | A | 0.675 | 0.112 |
-| Without group B | B | 0.812 | -0.025 |
-| Without group F | F | 0.769 | 0.017 |
-| Without group G | G | 0.793 | -0.007 |
+| All features |  | 0.509 | 0.000 |
+| Without group A | A | 0.380 | 0.129 |
+| Without group B | B | 0.470 | 0.039 |
+| Without group F | F | 0.549 | -0.040 |
+| Without group G | G | 0.508 | 0.001 |
