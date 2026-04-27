@@ -1,0 +1,31 @@
+# Paragraph Classification Heuristic Report
+
+## Label counts
+- INTRODUCTION: 538
+- BODY: 2249
+- CONCLUSION: 133
+
+## Adjacent paragraph merge candidates
+- Candidate pairs with Jaccard similarity >= 0.25: 139
+
+## Example merge candidates
+
+Similarity=0.281
+Paragraph A: Principally, respondents assert that the prosecutor may still be permitted to use the defendant's testimony to impeach him at trial.
+Paragraph B: This Court has not decided whether Simmons precludes the use of a defendant's testimony at a suppression hearing to impeach his testimony at trial.
+
+Similarity=0.571
+Paragraph A: S., at 137; United States v.
+Paragraph B: Ceccolini, 435 U.S. 268, 275-276 (1978); United States v.
+
+Similarity=0.286
+Paragraph A: Ceccolini, 435 U.S. 268, 275-276 (1978); United States v.
+Paragraph B: Calandra, 414 U.S. 338, 350-351 (1974).
+
+Similarity=0.625
+Paragraph A: New York, 401 U.S. 222 (1971); United States v.
+Paragraph B: Kahan, 415 U.S. 239 (1974); United States v.
+
+Similarity=0.375
+Paragraph A: Kahan, 415 U.S. 239 (1974); United States v.
+Paragraph B: Havens, 446 U.S. 620 (1980); Jenkins v.

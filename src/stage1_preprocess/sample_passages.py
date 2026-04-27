@@ -26,14 +26,14 @@ def main():
 
     print(f"Total paragraphs collected: {len(all_paragraphs)}")
 
-    sample = random.sample(all_paragraphs, 50)
+    sample = random.sample(all_paragraphs, 150)
 
     with open(OUTPUT_FILE, "w") as f:
         for i, para in enumerate(sample):
             f.write(f"### SAMPLE {i}\n")
             f.write(para + "\n\n")
 
-    print(f"Saved 50 samples to {OUTPUT_FILE}")
+    print(f"Saved 150 samples to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
