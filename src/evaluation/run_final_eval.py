@@ -15,6 +15,9 @@ COMMANDS = [
     ("CRF_Gazetteer", "data/splits/test_crf_gazetteer_pred.conll"),
     ("CRF_Chunk", "data/splits/test_crf_chunk_pred.conll"),
     ("CRF_NoStage2", "data/splits/test_crf_no_stage2_pred.conll"),
+    ("CRF_WordCluster", "data/splits/test_crf_wordcluster_pred.conll"),
+    ("Ensemble_TunedRule", "data/splits/test_ensemble_tuned_rule_pred.conll"),
+    ("Ensemble_NoStage2Rule", "data/splits/test_ensemble_nostage2_rule_pred.conll"),
     ("CRF_BIO_Repair", "data/splits/test_crf_bio_repair_pred.conll"),
     ("CRF_FullPostprocess", "data/splits/test_crf_full_postprocess_pred.conll"),
 ]
@@ -35,8 +38,11 @@ This file records the final span-level evaluation commands used for the Legal NE
 8. CRF + gazetteer features
 9. CRF + chunk features
 10. CRF without Stage 2 rule-output features
-11. CRF + BIO repair
-12. CRF + full heuristic post-processing
+11. CRF + Brown-style word-cluster features
+12. Tuned CRF + Rule-Based ensemble
+13. NoStage2 CRF + Rule-Based ensemble
+14. CRF + BIO repair
+15. CRF + full heuristic post-processing
 
 ## Final Best System
 
@@ -65,6 +71,9 @@ Main result files:
 - results/span_eval_CRF_Gazetteer.md
 - results/span_eval_CRF_Chunk.md
 - results/span_eval_CRF_NoStage2.md
+- results/span_eval_CRF_WordCluster.md
+- results/span_eval_Ensemble_TunedRule.md
+- results/span_eval_Ensemble_NoStage2Rule.md
 - results/span_eval_CRF_BIO_Repair.md
 - results/span_eval_CRF_FullPostprocess.md
 """
